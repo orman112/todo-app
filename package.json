@@ -1,0 +1,13 @@
+{
+    "name": "todo-app",
+    "version": "1.0.0",
+    "description": "Todo Application built with Node.Js, ExpressJs, MongoDB and VueJs",
+    "main": "server.js",
+    "author": "Clayton Orman",
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "method-override": "^2.3.10",
+        "mongoose": "^5.0.6"
+    }
+}
