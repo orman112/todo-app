@@ -22,3 +22,72 @@
       </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+import bus from './../bus.js';
+export default {
+  data() {
+      return {
+          todos: []
+      }
+  },
+  created: function() { //get todo items and start listening to events once component is created
+    this.fetchTodo();
+    this.listenToEvents();
+  },
+  methods: {
+      fetchTodo() {
+          let uri = 'http://localhost:4000/api/all';
+          axios.get(uri)
+            .then((response) => {
+                this.todos = response.data;
+            });
+      },
+      updateTodo(todo) {
+          let id = todo._id;
+          let uri = `http://localhost:4000/api/update/${id}`;
+          axios.post(uri, todo).then((response) => {
+              console.log(response);
+          }).catch((error) => {
+              console.log(error);
+          })
+      },
+      deleteTodo(id) {
+          let uri = `http://localhost:4000/api/delete/${id}`;
+          axios.get(uri);
+          this.fetchTodo();
+      },
+      listenToEvents() {
+          bus.$on('refreshTodo', ($event) => {
+              this.fetchTodo(); // refresh or update todo list on the page
+          });
+      }
+  }
+}
+</script>
+<style scoped>
+    .delete__icon {}
+    .todo__done {
+        text-decoration: line-through !important
+    }
+    .no_border_left_right {
+        border-left: 0px;
+        border-right: 0px;
+    }
+    .flat_form {
+        border-radius: 0px;
+    }
+    .mrb-10 {
+        margin-bottom: 10px;
+    }
+    .addon-left {
+        background-color: none !important;
+        border-left: 0px !important;
+        cursor: pointer !important;
+    }
+    .addon-right {
+        background-color: none !important;
+        border-right: 0px !important;
+    }
+</style>
