@@ -4,7 +4,7 @@
     "description": "Todo Application built with Node.Js, ExpressJs, MongoDB and VueJs",
     "main": "server.js",
     "scripts": {
-        "start": "webpack | nodemon server.js"
+        "start": "webpack && nodemon server.js"
     },
     "author": "Clayton Orman",
     "dependencies": {
