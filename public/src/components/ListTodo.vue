@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="col-mid-12" v-show="todos.length > 0">
+      <div class="col-mid-12" v-show="todos.length>0">
           <h3>Todo Items</h3>
           <div class="row mrb-10" v-for="todo in todos">
               <div class="input-group m-b-5">
@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios';
-import bus from './../bus.js';
+import bus from './../../bus';
 export default {
   data() {
       return {

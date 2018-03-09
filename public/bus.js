@@ -1,6 +1,6 @@
 'use strict'
 
-import Vue from 'vue'
+import Vue from 'vue';
 
 const bus = new Vue()
 
