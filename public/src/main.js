@@ -9,5 +9,5 @@ new Vue({
         console.log('root instance was created')
     },
     components: { App },
-    method: {}
-})
+    method: {} 
+})  

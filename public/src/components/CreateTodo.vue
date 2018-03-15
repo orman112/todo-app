@@ -30,7 +30,6 @@ export default {
               done: 0
           };
           axios.post(url, param).then((reponse) => {
-              console.log(response);
               this.clearTodo();
               this.refreshTodo();
               this.typing = false;

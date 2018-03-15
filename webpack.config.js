@@ -1,5 +1,14 @@
-module.exports = {
+var plugins = [];
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const path = require('path');
+ 
+plugins.push(new WebpackShellPlugin({
+  onBuildStart: ['echo "Starting"'],
+  onBuildEnd: ['nodemon server.js']
+}));
 
+var config = {
+  
     entry: './public/src/main.js',
     output: {
       filename: './public/build/bundle.js'
@@ -40,7 +49,15 @@ module.exports = {
         }
       ]
     },
-    devServer: {
-      port: 3000
+    devServer: {    
+      contentBase: path.resolve(__dirname, 'public/src')
+    },
+    plugins: plugins,
+    watch: true,
+    watchOptions: {
+      ignored: /node_modules/,
+      poll: 1000
     }
   }
+
+  module.exports = config;

@@ -48,18 +48,20 @@ export default {
           let id = todo._id;
           let uri = `http://localhost:4000/api/update/${id}`;
           axios.post(uri, todo).then((response) => {
-              console.log(response);
+              console.log(`Updated ${id}: ${response}`);
           }).catch((error) => {
               console.log(error);
           })
       },
       deleteTodo(id) {
           let uri = `http://localhost:4000/api/delete/${id}`;
-          axios.get(uri);
-          this.fetchTodo();
+          axios.get(uri).then(() => {
+            this.fetchTodo();
+          });
       },
       listenToEvents() {
           bus.$on('refreshTodo', ($event) => {
+              console.log('refreshing todos');
               this.fetchTodo(); // refresh or update todo list on the page
           });
       }

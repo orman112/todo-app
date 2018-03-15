@@ -4,7 +4,7 @@
     "description": "Todo Application built with Node.Js, ExpressJs, MongoDB and VueJs",
     "main": "server.js",
     "scripts": {
-        "start": "webpack && nodemon server.js"
+        "build": "webpack --progress"
     },
     "author": "Clayton Orman",
     "dependencies": {
@@ -17,7 +17,8 @@
         "morgan": "^1.9.0",
         "nodemon": "^1.15.1",
         "vue": "^2.5.13",
-        "vue-axios": "^2.0.2"
+        "vue-axios": "^2.0.2",
+        "webpack-shell-plugin": "^0.5.0"
     },
     "devDependencies": {
         "prettier": "^1.9.2",

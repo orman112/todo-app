@@ -52,10 +52,10 @@ todoRoutes.route('/update/:id').post((req, res, next) => {
             function (error, todo) {
                 if (error)
                     res.status(400).send('Unable to update todo');
-                
-                res.status(200).json(todo);
             }
         });
+        
+        res.status(200).json(todo);
     });
 });
 

@@ -11988,7 +11988,6 @@ return Vue$3;
                 done: 0
             };
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, param).then(reponse => {
-                console.log(response);
                 this.clearTodo();
                 this.refreshTodo();
                 this.typing = false;
@@ -12353,18 +12352,20 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
             let id = todo._id;
             let uri = `http://localhost:4000/api/update/${id}`;
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(uri, todo).then(response => {
-                console.log(response);
+                console.log(`Updated ${id}: ${response}`);
             }).catch(error => {
                 console.log(error);
             });
         },
         deleteTodo(id) {
             let uri = `http://localhost:4000/api/delete/${id}`;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(uri);
-            this.fetchTodo();
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(uri).then(() => {
+                this.fetchTodo();
+            });
         },
         listenToEvents() {
             __WEBPACK_IMPORTED_MODULE_1__bus__["a" /* default */].$on('refreshTodo', $event => {
+                console.log('refreshing todos');
                 this.fetchTodo(); // refresh or update todo list on the page
             });
         }
