@@ -30,7 +30,7 @@ todoRoutes.route('/add').post((req, res) => {
 });
 
 //delete a todo item
-todoRoutes.route('/delete/:id').get((req, res, next) => {
+todoRoutes.route('/delete/:id').delete((req, res, next) => {
     var id = req.params.id;
     Todo.findByIdAndRemove(id, (err, todo) => {
         if (err) return next(new Error('Todo was not found'));
@@ -40,7 +40,7 @@ todoRoutes.route('/delete/:id').get((req, res, next) => {
 });
 
 //perform update on todo item
-todoRoutes.route('/update/:id').post((req, res, next) => {
+todoRoutes.route('/update/:id').put((req, res, next) => {
     var id = req.params.id;
     Todo.findById(id, (error, todo) => {
         if (error) return next(new Error('Todo was not found'))

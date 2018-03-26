@@ -12351,7 +12351,7 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
         updateTodo(todo) {
             let id = todo._id;
             let uri = `http://localhost:4000/api/update/${id}`;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(uri, todo).then(response => {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(uri, todo).then(response => {
                 console.log(`Updated ${id}: ${response}`);
             }).catch(error => {
                 console.log(error);
@@ -12359,7 +12359,8 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
         },
         deleteTodo(id) {
             let uri = `http://localhost:4000/api/delete/${id}`;
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(uri).then(() => {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(uri).then(() => {
+                console.log('deleting');
                 this.fetchTodo();
             });
         },
